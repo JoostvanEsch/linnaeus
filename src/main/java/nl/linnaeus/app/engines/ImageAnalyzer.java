@@ -9,6 +9,8 @@ public class ImageAnalyzer {
 	private Long id;
 	private String url;
 	*/
+	
+	/*
 	private static String dummyUrlCow1 = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Cow_female_black_white.jpg/220px-Cow_female_black_white.jpg";
 	private static String dummyUrlCow2 = "http://www.qygjxz.com/data/out/52/3930490-cow-picture.jpg";
 	private static String dummyUrlCow3 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvBm6oREXdq0Xv7CNFQjDUuBsK2ySDZAwzPkJZAC08EzHHS_4L";
@@ -24,6 +26,7 @@ public class ImageAnalyzer {
 	private static String dummyUrlCat1 = "https://www.pets4homes.co.uk/images/articles/771/large/cat-lifespan-the-life-expectancy-of-cats-568e40723c336.jpg";
 	private static String dummyUrlCat2 = "https://www.bluecross.org.uk/sites/default/files/pets/338228.jpg";
 	private static String dummyUrlCat3 = "http://www.golfian.com/wp-content/uploads/2016/06/Brown-Ragdoll-Cat-Baby-Picture.jpg";
+	*/
 	
 	private String reqUrl;
 	
