@@ -12,7 +12,11 @@ public class AnalyzedImage {
 	private ArrayList<HashMap<String, Object>> categories;
 	private ArrayList<HashMap<String, Object>> tags;
 	
+<<<<<<< HEAD
 	//private String[] returnableAnimals = {"dog","cat"};
+=======
+	private String[] returnableAnimals = {"dog","cat"};
+>>>>>>> 1a27f7c7083a9fadba709d280860a559dff53d4f
 	
 	//Print AnalyzedImage info
 	public void printInfo() {
@@ -64,6 +68,7 @@ public class AnalyzedImage {
 		String determinatedTag = "Da's geen dier, da's wat 't is, geen dier.";
 		
 		//Eerst kijken of categorie = animal_...
+<<<<<<< HEAD
 		if (categories != null) {
 			for (HashMap<String, Object> categorie : categories) {
 				Object[] catArr = categorie.values().toArray();
@@ -74,6 +79,16 @@ public class AnalyzedImage {
 					determinatedTag = catArr[1].toString().substring(catArr[1].toString().indexOf("_")+1, catArr[1].toString().length());
 					isDeterminated = true;
 				}
+=======
+		for (HashMap<String, Object> categorie : categories) {
+			Object[] catArr = categorie.values().toArray();
+			//System.out.println(catArr[1].toString());
+			if (catArr[1].toString().startsWith("animal")) {
+				//System.out.println(catArr[1].toString().substring(catArr[1].toString().indexOf("_")+1, catArr[1].toString().length()));
+				//System.out.println("");
+				determinatedTag = catArr[1].toString().substring(catArr[1].toString().indexOf("_")+1, catArr[1].toString().length());
+				isDeterminated = true;
+>>>>>>> 1a27f7c7083a9fadba709d280860a559dff53d4f
 			}
 		}
 		
