@@ -6,12 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity
+//@Entity
 public class Observation {
 	
 	//Fields
-	@Id
-	@GeneratedValue
+	//@Id
+	//@GeneratedValue
 	private long id;
 	private String photoUrl;
 	private String tag;
@@ -19,10 +19,96 @@ public class Observation {
 	private String location;
 	private LocalDateTime datetime;
 	private double rating;
+
 	
 	//Constructors
+	public Observation() {}
 	
+	public Observation(long id, String photoUrl, String tag, User user, String location, LocalDateTime datetime,
+			double rating) {
+		super();
+		this.id = id;
+		this.photoUrl = photoUrl;
+		this.tag = tag;
+		this.user = user;
+		this.location = location;
+		this.datetime = datetime;
+		this.rating = rating;
+	}
+
+
+
 	//Getters en setters
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+
+
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
+
+
+	public String getTag() {
+		return tag;
+	}
+
+
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+	public String getLocation() {
+		return location;
+	}
+
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+
+	public LocalDateTime getDatetime() {
+		return datetime;
+	}
+
+
+	public void setDatetime(LocalDateTime datetime) {
+		this.datetime = datetime;
+	}
+
+
+	public double getRating() {
+		return rating;
+	}
+
+
+	public void setRating(double rating) {
+		this.rating = rating;
+	}
+	
+	
 	
 
 }
