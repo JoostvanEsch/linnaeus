@@ -82,7 +82,7 @@ public class Endpoints {
 		
 		//Check of gebruiker al bestaat
 		for (User u : userList) {
-			if (u.getMail().equalsIgnoreCase(u.getMail())) userMailTaken = true;
+			if (user.getMail().equalsIgnoreCase(u.getMail())) userMailTaken = true;
 		}
 		
 		//Gebruiker registreren als voldaan wordt aan voorwaarden
