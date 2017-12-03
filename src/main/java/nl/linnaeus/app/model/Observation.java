@@ -6,16 +6,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-//@Entity
+@Entity
 public class Observation {
 	
+	/*TODO
+	 * add field user of type User to Observation
+	 * 
+	 * */
+	
 	//Fields
-	//@Id
-	//@GeneratedValue
-	private long id;
+	@Id
+	@GeneratedValue
+	private Long id;
 	private String photoUrl;
 	private String tag;
-	private User user;
 	private String location;
 	private LocalDateTime datetime;
 	private double rating;
@@ -24,13 +28,12 @@ public class Observation {
 	//Constructors
 	public Observation() {}
 	
-	public Observation(long id, String photoUrl, String tag, User user, String location, LocalDateTime datetime,
+	public Observation(long id, String photoUrl, String tag, String location, LocalDateTime datetime,
 			double rating) {
 		super();
 		this.id = id;
 		this.photoUrl = photoUrl;
 		this.tag = tag;
-		this.user = user;
 		this.location = location;
 		this.datetime = datetime;
 		this.rating = rating;
@@ -66,16 +69,6 @@ public class Observation {
 
 	public void setTag(String tag) {
 		this.tag = tag;
-	}
-
-
-	public User getUser() {
-		return user;
-	}
-
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 
