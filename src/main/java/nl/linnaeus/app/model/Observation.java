@@ -23,7 +23,6 @@ public class Observation {
 	private String location;
 	private LocalDateTime datetime;
 	private double rating;
-
 	
 	//Constructors
 	public Observation() {}
@@ -39,69 +38,53 @@ public class Observation {
 		this.rating = rating;
 	}
 
-
-
 	//Getters en setters
 	public long getId() {
 		return id;
 	}
 
-
 	public void setId(long id) {
 		this.id = id;
 	}
-
 
 	public String getPhotoUrl() {
 		return photoUrl;
 	}
 
-
 	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
 	}
-
 
 	public String getTag() {
 		return tag;
 	}
 
-
 	public void setTag(String tag) {
 		this.tag = tag;
 	}
-
 
 	public String getLocation() {
 		return location;
 	}
 
-
 	public void setLocation(String location) {
 		this.location = location;
 	}
-
 
 	public LocalDateTime getDatetime() {
 		return datetime;
 	}
 
-
 	public void setDatetime(LocalDateTime datetime) {
 		this.datetime = datetime;
 	}
-
 
 	public double getRating() {
 		return rating;
 	}
 
-
 	public void setRating(double rating) {
 		this.rating = rating;
 	}
 	
-	
-	
-
 }

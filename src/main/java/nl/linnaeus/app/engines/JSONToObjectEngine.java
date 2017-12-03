@@ -15,13 +15,14 @@ public class JSONToObjectEngine {
 	private AnalyzedImage analyzedImage;
 
 	//Constructors
+	public JSONToObjectEngine() {}
+	
 	public JSONToObjectEngine(String JSONMessage) {
 		this.JSONMessage = JSONMessage;
 	}
-	public JSONToObjectEngine() {}
 
 	//Convert JSON string to AnalyzedImage object 
-	public AnalyzedImage execute(String JSONMessage) {
+	public AnalyzedImage createAnalyzedImage(String JSONMessage) {
 		ObjectMapper mapper = new ObjectMapper();
 
 		try {
@@ -44,20 +45,17 @@ public class JSONToObjectEngine {
 	public String getJSONMessage() {
 		return JSONMessage;
 	}
+	
 	public void setJSONMessage(String jSONMessage) {
 		JSONMessage = jSONMessage;
 	}
+	
 	public AnalyzedImage getAnalyzedImage() {
 		return analyzedImage;
 	}
+	
 	public void setAnalyzedImage(AnalyzedImage analyzedImage) {
 		this.analyzedImage = analyzedImage;
 	}
 
 }
-
-
-//Print Object, en print Object in format
-//System.out.println(analyzedImage);
-//String prettyAnIm = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(analyzedImage);
-//System.out.println("OBJECT RETURNED:\n" + prettyAnIm);
