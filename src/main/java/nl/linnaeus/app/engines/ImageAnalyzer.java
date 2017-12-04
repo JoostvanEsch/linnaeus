@@ -5,10 +5,8 @@ import nl.linnaeus.app.model.AnalyzedImage;
 public class ImageAnalyzer {
 	
 	//Fields
+	private String reqUrl;
 	/*
-	private Long id;
-	private String url;
-	*/
 	private static String dummyUrlCow1 = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Cow_female_black_white.jpg/220px-Cow_female_black_white.jpg";
 	private static String dummyUrlCow2 = "http://www.qygjxz.com/data/out/52/3930490-cow-picture.jpg";
 	private static String dummyUrlCow3 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvBm6oREXdq0Xv7CNFQjDUuBsK2ySDZAwzPkJZAC08EzHHS_4L";
@@ -24,12 +22,11 @@ public class ImageAnalyzer {
 	private static String dummyUrlCat1 = "https://www.pets4homes.co.uk/images/articles/771/large/cat-lifespan-the-life-expectancy-of-cats-568e40723c336.jpg";
 	private static String dummyUrlCat2 = "https://www.bluecross.org.uk/sites/default/files/pets/338228.jpg";
 	private static String dummyUrlCat3 = "http://www.golfian.com/wp-content/uploads/2016/06/Brown-Ragdoll-Cat-Baby-Picture.jpg";
+	*/
 	
-	private String reqUrl;
-	
-	
-	//Constructor
+	//Constructors
 	public ImageAnalyzer() {}
+	
 	public ImageAnalyzer(String reqUrl) {
 		this.reqUrl = reqUrl;
 	}
@@ -38,21 +35,13 @@ public class ImageAnalyzer {
 	public AnalyzedImage processURL() {
 		return processURL(this.reqUrl);
 	}
+	
 	public AnalyzedImage processURL(String url) {
 		Vision v = new Vision(url);
 		JSONToObjectEngine J2O = new JSONToObjectEngine();
-		AnalyzedImage koko = J2O.execute(v.getJSON());
-		koko.setSource(url);
-		
-		return koko;
+		AnalyzedImage analyzedImage = J2O.createAnalyzedImage(v.getJSON());
+		analyzedImage.setSource(url);
+		return analyzedImage;
 	}
-	
-	
-//	public static void main(String[] args) throws Exception{
-//		ImageAnalyzer ia = new ImageAnalyzer();
-//		AnalyzedImage anim = ia.processURL("https://i.imgur.com/DhPxbKk.jpg");
-//		anim.printInfo();
-//		System.out.println(anim.determineTag());
-//	}
-	
+
 }

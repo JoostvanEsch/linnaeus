@@ -12,52 +12,6 @@ public class AnalyzedImage {
 	private ArrayList<HashMap<String, Object>> categories;
 	private ArrayList<HashMap<String, Object>> tags;
 	
-	//private String[] returnableAnimals = {"dog","cat"};
-	
-	//Print AnalyzedImage info
-	public void printInfo() {
-		System.out.println("\n");
-		System.out.println("[ AnalyzedImage INFO: ]");
-		System.out.println("Source: \t\t" + getSource());
-		System.out.println("Metadata: \t" + getMetadata());
-		System.out.println("RequestId: \t" + getRequestId());
-		System.out.println("Categories: \t" + getCategories());
-		System.out.println("Tags: \t\t" + getTags());
-		System.out.println("\n");
-	}
-	
-	//Getters en setters
-	public String getSource() {
-		return source;
-	}
-	public void setSource(String source) {
-		this.source = source;
-	}
-	public Object getMetadata() {
-		return metadata;
-	}
-	public void setMetadata(HashMap<String, Object> metadata) {
-		this.metadata = metadata;
-	}
-	public String getRequestId() {
-		return requestId;
-	}
-	public void setRequestId(String requestId) {
-		this.requestId = requestId;
-	}
-	public ArrayList<HashMap<String, Object>> getCategories() {
-		return categories;
-	}
-	public void setCategories(ArrayList<HashMap<String, Object>> categories) {
-		this.categories = categories;
-	}
-	public ArrayList<HashMap<String, Object>> getTags() {
-		return tags;
-	}
-	public void setTags(ArrayList<HashMap<String, Object>> tags) {
-		this.tags = tags;
-	}
-
 	public String determineTag() {
 		
 		boolean isDeterminated = false;
@@ -97,6 +51,60 @@ public class AnalyzedImage {
 		
 		return determinatedTag;
 	}
+	
+	//Print AnalyzedImage info
+	public void printInfo() {
+		System.out.println("\n");
+		System.out.println("[ AnalyzedImage INFO: ]");
+		System.out.println("Source: \t\t" + getSource());
+		System.out.println("Metadata: \t" + getMetadata());
+		System.out.println("RequestId: \t" + getRequestId());
+		System.out.println("Categories: \t" + getCategories());
+		System.out.println("Tags: \t\t" + getTags());
+		System.out.println("\n");
+	}
+	
+	//Getters en setters
+	public String getSource() {
+		return source;
+	}
+	
+	public void setSource(String source) {
+		this.source = source;
+	}
+	
+	public Object getMetadata() {
+		return metadata;
+	}
+	
+	public void setMetadata(HashMap<String, Object> metadata) {
+		this.metadata = metadata;
+	}
+	
+	public String getRequestId() {
+		return requestId;
+	}
+	
+	public void setRequestId(String requestId) {
+		this.requestId = requestId;
+	}
+	
+	public ArrayList<HashMap<String, Object>> getCategories() {
+		return categories;
+	}
+	
+	public void setCategories(ArrayList<HashMap<String, Object>> categories) {
+		this.categories = categories;
+	}
+	
+	public ArrayList<HashMap<String, Object>> getTags() {
+		return tags;
+	}
+	
+	public void setTags(ArrayList<HashMap<String, Object>> tags) {
+		this.tags = tags;
+	}
+
 }
 
 
