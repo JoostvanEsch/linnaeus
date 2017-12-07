@@ -1,5 +1,6 @@
 package nl.linnaeus.app.rest;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import nl.linnaeus.app.engines.ImageAnalyzer;
 import nl.linnaeus.app.model.AnalyzedImage;
+import nl.linnaeus.app.model.Observation;
 import nl.linnaeus.app.model.User;
 import nl.linnaeus.app.service.AppService;
 
@@ -24,10 +26,54 @@ public class Endpoints {
 	@Autowired
 	AppService appService;
 	
+	/*
+	 ENDPOINTS
+	 
+	 OBSERVATIONS
+		GET:		/get-observations
+		POST:	/create-observation-from-image
+		POST:	/analyze-image-from-url
+	 
+	 USERS
+		GET:		/get-users
+		POST:	/register-user
+		POST:	/login
+	 
+	 TEST
+	 	GET:		/test
+	 
+	*/
 	
-	////////////////////////////
-	// Analyze image from URL //
-	////////////////////////////
+	
+	//////////////////
+	// Observations //
+	//////////////////
+	
+	//get-observation
+    @ResponseBody
+    @GetMapping("/get-observations")
+    public List<Observation> getObservations() {
+    		return appService.getObservationsFromDatabase();
+    }
+	
+	//create-observation-from-image
+	//Actieve user + .jpg afbeelding in imgur link
+	//http://localhost:8080/create-observation-from-image?userId=1234&url=https://i.imgur.com/aDwklHj.jpg
+	@ResponseBody
+	@PostMapping
+	public void addTaggedObservation(String userId, String url) {
+		LocalDateTime localDateTime = LocalDateTime.now();
+		Observation observation = new Observation();
+		
+		observation.setUserId(new Long(userId));
+		observation.setPhotoUrl(url);
+		observation.setTag("dummyTag");
+		observation.setLocation("dummyLocation");
+		observation.setDatetime(localDateTime);
+		observation.setRating((double) 5);
+		
+		appService.addObservationToDatabase(observation);
+	}
 	
 	//analyze-image-from-url
 	//.jpg afbeelding in imgur link
@@ -133,6 +179,7 @@ public class Endpoints {
     // Test endpoint //
     ///////////////////
 	
+	//test
 	@ResponseBody
     @GetMapping("/test")
     public void getTest(){
