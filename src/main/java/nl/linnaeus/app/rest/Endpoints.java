@@ -24,6 +24,7 @@ public class Endpoints {
 	@Autowired
 	AppService appService;
 	
+	
 	////////////////////////////
 	// Analyze image from URL //
 	////////////////////////////
@@ -82,12 +83,15 @@ public class Endpoints {
 		
 		//Check of gebruiker al bestaat
 		for (User u : userList) {
-			if (user.getMail().equalsIgnoreCase(u.getMail())) userMailTaken = true;
+			if (user.getMail().equalsIgnoreCase(u.getMail())) {
+				userMailTaken = true;
+			}
 		}
 		
 		//Gebruiker registreren als voldaan wordt aan voorwaarden
 		if (userMailTaken == false && userMailValid == true && passwordValid == true) {
-			appService.addToDatabase(user);
+			user.encryptPassword();
+			appService.addUserToDatabase(user);
 			return new String("Registratie gelukt");
 		} else {
 			return new String("Registratie mislukt");
@@ -109,14 +113,14 @@ public class Endpoints {
 			if (u.getMail().equalsIgnoreCase(user.getMail())) {
 				userExists = true;
 				uid = u.getId();
-				uPass = u.getPassword();
+				uPass = u.getEncryptedPassword();
 			}
 		}
 		
 		if (userExists == false) {
 		return new String("Login fail: User does not exist");
 		} else {
-			if (user.getPassword().equals(uPass)) {
+			if (User.encrypt(user.getPassword()).equals(uPass)) {
 				return new String("Login succes: uid="+uid);
 			} else {
 				return new String("Login fail: Password incorrect");

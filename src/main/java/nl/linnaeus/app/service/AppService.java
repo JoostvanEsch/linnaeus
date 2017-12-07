@@ -18,7 +18,7 @@ public class AppService {
     @Autowired
     ObservationRepository observationRepository;
     
-	public void addToDatabase(User user) {
+	public void addUserToDatabase(User user) {
 		userRepository.save(user);
 	}
 	
