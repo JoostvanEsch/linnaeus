@@ -9,15 +9,11 @@ import javax.persistence.Id;
 @Entity
 public class Observation {
 	
-	/*TODO
-	 * add field user of type User to Observation
-	 * 
-	 * */
-	
 	//Fields
 	@Id
 	@GeneratedValue
 	private Long id;
+	private Long userId;
 	private String photoUrl;
 	private String tag;
 	private String location;
@@ -27,10 +23,11 @@ public class Observation {
 	//Constructors
 	public Observation() {}
 	
-	public Observation(long id, String photoUrl, String tag, String location, LocalDateTime datetime,
+	public Observation(Long id, Long userId, String photoUrl, String tag, String location, LocalDateTime datetime,
 			double rating) {
 		super();
 		this.id = id;
+		this.userId = userId;
 		this.photoUrl = photoUrl;
 		this.tag = tag;
 		this.location = location;
@@ -39,12 +36,20 @@ public class Observation {
 	}
 
 	//Getters en setters
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public String getPhotoUrl() {
