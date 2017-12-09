@@ -31,7 +31,7 @@ public class Endpoints {
 	 
 	 OBSERVATIONS
 		GET:		/get-observations
-		POST:	/create-observation-from-image
+		POST:	/add-observation
 		POST:	/analyze-image-from-url
 	 
 	 USERS
@@ -56,17 +56,12 @@ public class Endpoints {
     		return appService.getObservationsFromDatabase();
     }
 	
-	//create-observation-from-image
-	//Actieve user + .jpg afbeelding in imgur link
-	//http://localhost:8080/create-observation-from-image?userId=1234&url=https://i.imgur.com/aDwklHj.jpg
-	@ResponseBody
-	@PostMapping
-	public void addTaggedObservation(String userId, String url) {
+	//add-observation
+	//Observation object met userId en url geinstantieerd
+	@PostMapping("/add-observation")
+	public void addObservation(@RequestBody Observation observation) {
 		LocalDateTime localDateTime = LocalDateTime.now();
-		Observation observation = new Observation();
 		
-		observation.setUserId(new Long(userId));
-		observation.setPhotoUrl(url);
 		observation.setTag("dummyTag");
 		observation.setLocation("dummyLocation");
 		observation.setDatetime(localDateTime);
