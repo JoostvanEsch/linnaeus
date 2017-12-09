@@ -102,13 +102,12 @@ public class Endpoints {
 	public String postRegistration(@RequestBody User user){
 		
 		ArrayList<User> userList = new ArrayList<User>();
-		boolean userMailTaken = false;
+		userList = appService.getUsersFromDatabase();
 		boolean userMailValid;
+		boolean userMailAvailable = true;
 		boolean passwordValid = true;
 		
-		userList = appService.getUsersFromDatabase();
-		
-		//Check of user.mail een geldig emailadres is, en check of password alleen letters en cijfers bevat
+		//Check geldigheid emailadres
         Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
         Matcher mat = pattern.matcher(user.getMail());
         if (mat.matches()) {
@@ -116,21 +115,27 @@ public class Endpoints {
         } else {
         		userMailValid = false;
         }
-		for (int j = 0; j < user.getPassword().length(); j++) {
-			if (!Character.isLetterOrDigit(user.getPassword().charAt(j))) {
-				passwordValid = false;
-			}
-		}
-		
+        
 		//Check of gebruiker al bestaat
 		for (User u : userList) {
 			if (user.getMail().equalsIgnoreCase(u.getMail())) {
-				userMailTaken = true;
+				userMailAvailable = false;
 			}
 		}
+        
+        //Check geldigheid password
+        if (user.getPassword().length() < 1) {
+        		passwordValid = false;
+        } else {
+			for (int j = 0; j < user.getPassword().length(); j++) {
+				if (!Character.isLetterOrDigit(user.getPassword().charAt(j))) {
+					passwordValid = false;
+				}
+			}
+        }
 		
 		//Gebruiker registreren als voldaan wordt aan voorwaarden
-		if (userMailTaken == false && userMailValid == true && passwordValid == true) {
+		if (userMailAvailable == true && userMailValid == true && passwordValid == true) {
 			user.encryptPassword();
 			appService.addUserToDatabase(user);
 			return new String("Registratie gelukt");
